@@ -6,13 +6,13 @@ class User(BaseModel):
     name: str
 
 
-class RegisterSuccessReply(BaseModel):
+class RegisterSuccessReplyModel(BaseModel):
     success: bool
     user: User
     accessToken: str
     refreshToken: str
 
 
-class RegisterReplyFail(BaseModel):
+class RegisterReplyFailModel(BaseModel):
     success: bool
     message: str

@@ -1,6 +1,7 @@
 import random
 import string
 
+
 class DataGenerator:
     @staticmethod
     def generate_random_string():
