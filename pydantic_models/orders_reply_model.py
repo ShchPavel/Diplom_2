@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+from typing import List
 
 
 class UnauthorizedOrder(BaseModel):
@@ -29,6 +30,28 @@ class AuthorizedOrderWithIngredientsReplyModel(BaseModel):
     order: AuthorizedOrder
 
 
-class OrderWithoutIngredientsBasicModel(BaseModel):
+class OrderWithoutIngredientsBaseModel(BaseModel):
+    success: bool
+    message: str
+
+
+class Order(BaseModel):
+    id: str = Field(alias='_id')
+    ingredients: List[str]
+    status: str
+    name: str
+    createdAt: str
+    updatedAt: str
+    number: int
+
+
+class GetOrdersAuthorizedUserModel(BaseModel):
+    success: bool
+    orders: List[Order]
+    total: int
+    totalToday: int
+
+
+class GetOrdersUnauthorizedUserModel(BaseModel):
     success: bool
     message: str

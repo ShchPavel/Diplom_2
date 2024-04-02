@@ -31,7 +31,7 @@ class TestRegister:
                                  (DG.generate_random_email(), None, DG.generate_random_string()),
                                  (None, DG.generate_random_string(), DG.generate_random_string())
                              ])
-    def test_register_user_without_email_fail(self, email, password, name):
+    def test_register_user_without_parameter_fail(self, email, password, name):
         r = Register.register_new_user_using_parameters(email, password, name)
         response_status = r.status_code
         response_text: RegisterReplyFailModel = RegisterReplyFailModel.model_validate_json(r.text)

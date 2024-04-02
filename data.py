@@ -10,7 +10,10 @@ class StatusCodes:
     FORBIDDEN = 403
     OK = 200
     UNAUTHORIZED = 401
+    BAD_REQUEST = 400
+    INTERNAL_SERVER_ERROR = 500
 
 
 class Ingredients:
-    INGREDIENT1 = '61c0c5a71d1f82001bdaaa6d'
+    KNOWN_INGREDIENT = '61c0c5a71d1f82001bdaaa6d'
+    INVALID_INGREDIENT = '61c0c5a71d1f82001bdaaa'
