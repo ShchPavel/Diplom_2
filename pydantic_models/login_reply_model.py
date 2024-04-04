@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class User(BaseModel):
+class UserModel(BaseModel):
     email: str
     name: str
 
@@ -10,7 +10,7 @@ class LoginSuccessReplyModel(BaseModel):
     success: bool
     accessToken: str
     refreshToken: str
-    user: User
+    user: UserModel
 
 
 class LoginFailReplyModel(BaseModel):

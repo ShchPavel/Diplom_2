@@ -2,17 +2,17 @@ from pydantic import BaseModel, Field
 from typing import List
 
 
-class UnauthorizedOrder(BaseModel):
+class UnauthorizedOrderModel(BaseModel):
     number: int
 
 
 class UnauthorizedOrderWithIngredientsReplyModel(BaseModel):
     success: bool
     name: str
-    order: UnauthorizedOrder
+    order: UnauthorizedOrderModel
 
 
-class AuthorizedOrder(BaseModel):
+class AuthorizedOrderModel(BaseModel):
     ingredients: list
     id: str = Field(alias='_id')
     owner: dict
@@ -27,7 +27,7 @@ class AuthorizedOrder(BaseModel):
 class AuthorizedOrderWithIngredientsReplyModel(BaseModel):
     success: bool
     name: str
-    order: AuthorizedOrder
+    order: AuthorizedOrderModel
 
 
 class OrderWithoutIngredientsBaseModel(BaseModel):
@@ -35,7 +35,7 @@ class OrderWithoutIngredientsBaseModel(BaseModel):
     message: str
 
 
-class Order(BaseModel):
+class OrderModel(BaseModel):
     id: str = Field(alias='_id')
     ingredients: List[str]
     status: str
@@ -47,7 +47,7 @@ class Order(BaseModel):
 
 class GetOrdersAuthorizedUserModel(BaseModel):
     success: bool
-    orders: List[Order]
+    orders: List[OrderModel]
     total: int
     totalToday: int
 

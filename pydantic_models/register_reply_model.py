@@ -1,14 +1,14 @@
 from pydantic import BaseModel
 
 
-class User(BaseModel):
+class UserModel(BaseModel):
     email: str
     name: str
 
 
 class RegisterSuccessReplyModel(BaseModel):
     success: bool
-    user: User
+    user: UserModel
     accessToken: str
     refreshToken: str
 

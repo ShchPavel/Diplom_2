@@ -12,7 +12,3 @@ class DataGenerator:
     @staticmethod
     def generate_random_email():
         return f'{DataGenerator.generate_random_string()}@{DataGenerator.generate_random_string()}.{DataGenerator.generate_random_string()}'
-
-
-print(DataGenerator.generate_random_string())
-print(DataGenerator.generate_random_email())
