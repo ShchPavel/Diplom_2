@@ -1,9 +1,11 @@
+import allure
 import requests
 from data import Url
 
 
 class DeleteUser:
     @staticmethod
+    @allure.step('Удаляем пользователя')
     def delete_user(token):
         bearer_token = f'Bearer {token}'
         headers = {"Authorization": bearer_token}
@@ -13,6 +15,7 @@ class DeleteUser:
 
 class GetUserInfo:
     @staticmethod
+    @allure.step('Получаем информацию о пользователе')
     def get_user_info(token):
         bearer_token = f'Bearer {token}'
         headers = {"Authorization": bearer_token}
@@ -22,6 +25,7 @@ class GetUserInfo:
 
 class UpdateUser:
     @staticmethod
+    @allure.step('Обновляем информацию о пользователе')
     def update_user(token, payload):
 
         name = payload['name']

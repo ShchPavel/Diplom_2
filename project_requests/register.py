@@ -1,10 +1,11 @@
 import requests
 from data import Url
-from helpers import DataGenerator
+import allure
 
 
 class Register:
     @staticmethod
+    @allure.step('Регистрируем нового пользователя с определенными параметрами')
     def register_new_user_using_parameters(email=None, password=None, name=None):
         payload = {
             "email": email,
@@ -16,6 +17,7 @@ class Register:
         return response
 
     @staticmethod
+    @allure.step('Регистрируем нового пользователя с определенными параметрами')
     def register_new_user_using_payload(payload):
         response = requests.post(Url.REGISTER_URL, data=payload)
         return response

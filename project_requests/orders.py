@@ -1,10 +1,11 @@
 import requests
-
 from data import Url
+import allure
 
 
 class Orders:
     @staticmethod
+    @allure.step('Создаем заказ')
     def create_order(token=None, ingredients: list = None):
 
         payload = None
@@ -23,6 +24,7 @@ class Orders:
         return response
 
     @staticmethod
+    @allure.step('Получаем информацию о заказе')
     def get_order(token=None):
 
         bearer_token = None
