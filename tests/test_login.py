@@ -7,8 +7,8 @@ import allure
 class TestLogin:
 
     @allure.title('Проверка логина под существующим пользователем')
-    def test_login_success(self, register_temp_user_then_return_response_and_payload):
-        response, payload = register_temp_user_then_return_response_and_payload
+    def test_login_success(self, temp_user__return_response_and_payload):
+        response, payload = temp_user__return_response_and_payload
         r = Login.known_user_correct_login(payload)
 
         response_status = r.status_code
@@ -17,8 +17,8 @@ class TestLogin:
             assert response_status == StatusCodes.OK and response_text.success is True
 
     @allure.title('Проверка логина под НЕсуществующим пользователем')
-    def test_incorrect_login_fail(self, register_temp_user_then_return_response_and_payload):
-        response, payload = register_temp_user_then_return_response_and_payload
+    def test_incorrect_login_fail(self, temp_user__return_response_and_payload):
+        response, payload = temp_user__return_response_and_payload
         r = Login.known_user_change_credentials_incorrect_login(payload)
 
         response_status = r.status_code

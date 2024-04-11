@@ -8,17 +8,17 @@ import allure
 
 class TestRegister:
     @allure.title('Проверка успешного создания уникального пользователя')
-    def test_register_new_random_user_success(self, register_temp_user_then_return_response):
-        r = register_temp_user_then_return_response
+    def test_register_new_random_user_success(self, temp_user__return_response_and_payload):
+        response, payload = temp_user__return_response_and_payload
 
-        response_status = r.status_code
-        response_text: RegisterSuccessReplyModel = RegisterSuccessReplyModel.model_validate_json(r.text)
+        response_status = response.status_code
+        response_text: RegisterSuccessReplyModel = RegisterSuccessReplyModel.model_validate_json(response.text)
         with allure.step('Проверяем что в ответе StatusCode:200 и в теле ответа success:True'):
             assert response_status == StatusCodes.OK and response_text.success is True
 
     @allure.title('Проверка получения ошибки при создании юзера-дубликата')
-    def test_register_duplicated_user_fail(self, register_temp_user_then_return_response):
-        first_registration = register_temp_user_then_return_response
+    def test_register_duplicated_user_fail(self, temp_user__return_response_and_payload):
+        first_registration, payload = temp_user__return_response_and_payload
         first_registration_email = first_registration.json()['user']['email']
 
         second_registration = Register.register_new_user_using_parameters(email=first_registration_email)

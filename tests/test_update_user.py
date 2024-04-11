@@ -15,8 +15,9 @@ class TestUpdateUser:
     ])
     @allure.title('Проверка успешного изменения данных авторизованным пользователем. '
                   'Изменяется email: {email}, password: {password}, name: {name}')
-    def test_update_authorized_user_using_any_parameter_success(self, email, password, name, register_temp_user_then_return_response):
-        token = str(register_temp_user_then_return_response.json()['accessToken']).replace('Bearer ', '')
+    def test_update_authorized_user_using_any_parameter_success(self, email, password, name, temp_user__return_response_and_payload):
+        response, payload = temp_user__return_response_and_payload
+        token = str(response.json()['accessToken']).replace('Bearer ', '')
         payload = {
             'email': email,
             'password': password,
@@ -36,7 +37,7 @@ class TestUpdateUser:
     ])
     @allure.title('Проверка НЕуспешногго изменения данных НЕавторизованным пользователем. '
                   'Изменяется email: {email}, password: {password}, name: {name}')
-    def test_update_unauthorized_user_using_any_parameter_success(self, email, password, name, register_temp_user_then_return_response):
+    def test_update_unauthorized_user_using_any_parameter_success(self, email, password, name, temp_user__return_response_and_payload):
         token = None
         payload = {
             'email': email,
